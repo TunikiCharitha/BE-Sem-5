@@ -1,0 +1,42 @@
+#include<stdio.h>
+#include<pthread.h>
+#include<sys/ipc.h>
+#include<sys/msg.h>
+struct msgq{
+long mtype;
+char mg[200];
+}m1,m2;
+
+int mid;
+
+//int mid =msgget(1661,IPC_CREAT|0777);
+
+
+void * prod(void * arg)
+{
+        printf("producer called and message sent \n");
+        strcpy(m1.mg,"produced");
+        m1.mtype=1;
+        int val =msgsnd(mid,&m1,sizeof(m1),0);
+        pthread_exit(NULL);
+}
+
+void *cons(void * arg)
+{
+        int md =msgrcv(mid,&m2,sizeof(m2),0,0);
+        printf("consumer called message recived : %s \n",m2.mg);
+        pthread_exit(NULL);
+}
+
+void main()
+{
+         mid =msgget(1661,IPC_CREAT|0777);
+        pthread_t pid;
+        pthread_t cid;
+        int p=pthread_create(&pid,NULL,prod,(void *)10);
+        sleep(3);
+        int c=pthread_create(&cid,NULL,cons,(void *)12);
+
+        pthread_join(pid,NULL);
+        pthread_join(cid,NULL);
+}
