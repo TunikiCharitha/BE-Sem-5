@@ -1,0 +1,291 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+#backgroundImage{z-index: 1;}
+
+#backgroundImage:before {
+   content: "";
+   position: fixed;
+   z-index: -1;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   background-image: url("bg2.jpg");
+   background-size: auto;
+   min-height: 100%;
+   min-width: 100%;
+    opacity: 0.05;
+    filter:alpha(opacity=100);
+ }
+
+.button{
+  text-decoration: none;
+  font-weight: 600;
+  color: #6666ff;
+  font-family: arial;
+}
+header{background-image:url("images/headbg.jpg");
+color: white;
+  width: 100%;
+  padding: 15px 0;
+  text-align: center;
+}
+.navbar {
+    overflow: hidden;
+    background-image: url("images/navbarbg.jpg");
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;    
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: Gray;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+</style>
+</head>
+
+
+<body>
+<header> <h1>SMART ELECTRONICS</h1></header>
+
+<div class="navbar">
+  <a class="active" href="file:///C:/Users/DELL/Desktop/ecomWeb/ecom.html"><i class="fa fa-fw fa-home"></i> Home</a>
+  <a href="file:///C:/Users/DELL/Desktop/ecomWeb/contact.html"><i class="fa fa-fw fa-envelope"></i> Contact</a> 
+  <a href="file:///C:/Users/DELL/Desktop/ecomWeb/login.html"><i class="fa fa-fw fa-user"></i> Login</a>
+  <a href="file:///C:/Users/DELL/Desktop/ecomWeb/about.html"><i class="fa fa-sticky-note"></i> About Us</a>
+  <div class="dropdown">
+    <button class="dropbtn">Products
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="file:///C:/Users/DELL/Desktop/ecomWeb/laptops.html"><i class="fa fa-desktop"></i>Laptop</a>
+      <a href="file:///C:/Users/DELL/Desktop/ecomWeb/mobiles.html"><i class="fa fa-mobile"></i>Mobiles</a>
+      
+      <a href="file:///C:/Users/DELL/Desktop/ecomWeb/headphones.html"><i class="fa fa-headphones"></i>Headphones</a>
+    </div>
+  </div> 
+<input class="search-area" type="text" name="text" placeholder="search here">
+ <button class="search-btn" <i class="fa fa-search"></i>Search</button>
+<a href="#"><i class="fa fa-shopping-cart"></i> Cart</a>
+
+ 
+</div>
+<div id="backgroundImage">
+<ul class="resources">
+  <li>
+    <img src="images/iphone5s.jpg">
+    <br><br>
+
+    <div class="resource_info">
+      <a href="#" class="button">Apple Iphone 5s, 16GB - Unlocked (Space Gray)<br></a>
+      <h>by Apple</h>
+      <p class="price">Rs.24,999 </p>
+      <h2><a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart<br><br></a></h2>
+      <h>FREE Shipping on eligible orders<br></h>
+      <h>In stock on September 10,2018<br></h>
+      <h>Price may vary by colour</h>
+  </li>
+  <li>
+    <img src="images/redmi5.jpg">
+    <br><br>
+
+    <div class="resource_info">
+      <a href="#" class="button">Redmi 5 (Black, 32GB)<br></a>
+      <h>by Redmi</h>
+      <p class="price">Rs.8,999<br></p>
+      <h2><a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart<br><br></a></h2>
+      <h>FREE Shipping on eligible orders<br></h>
+      <h>In stock on September 10,2018<br></h>
+      <h>Price may vary by colour</h>
+  </li>
+  <li>
+    <img src="images/iphone6sb.jpg">
+    <br><br>
+
+    <div class="resource_info">
+      <a href="#" class="button">Apple iPhone 6S (Space Grey, 32GB)<br></a>
+      <h>by Apple</h>
+      <p class="price">Rs.35,288<br></p>
+      <h2><a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart<br><br></a></h2>
+      <h>FREE Shipping on eligible orders<br></h>
+      <h>In stock on September 10,2018<br></h>
+      <h>Price may vary by colour</h>
+  </li>
+  <li>
+    <img src="images/oneplus6.jpg">
+    <br><br>
+
+    <div class="resource_info">
+      <a href="#" class="button">OnePlus 6 (Mirror Black 6GB RAM + 64GB Memory)<br></a>
+      <h>by OnePlus</h>
+      <p class="price">Rs.34,999<br></p>
+      <h2><a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart<br><br></a></h2>
+      <h>FREE Shipping on eligible orders<br></h>
+      <h>In stock on September 10,2018<br></h>
+      <h>Price may vary by colour</h>
+  </li>
+  <li>
+    <img src="images/iphone6sw.jpg">
+    <br><br>
+
+    <div class="resource_info">
+      <a href="#" class="button">Apple iPhone 6S (Silver, 32GB)<br></a>
+      <h>by Apple</h>
+      <p class="price">Rs.35,500<br></p>
+      <h2><a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart<br><br></a></h2>
+      <h>FREE Shipping on eligible orders<br></h>
+      <hf>Only 1 left in stock - order soon.<br></hf>
+      <h>Price may vary by colour</h>
+  </li>
+  <li>
+    <img src="images/oneplus6r.jpg">
+    <br><br>
+
+    <div class="resource_info">
+      <a href="#" class="button">OnePlus 6 (Red, 8GB RAM + 128GB Memory)<br></a>
+      <h>by OnePlus</h>
+      <p class="price">Rs.39,999<br></p>
+      <h2><a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart<br><br></a></h2>
+      <h>FREE Shipping on eligible orders<br></h>
+      <h>In stock on September 10,2018<br></h>
+      <h>Price may vary by colour</h>
+  </li>
+  <li>
+    <img src="images/samsunggalaxy.jpg">
+    <br><br>
+
+    <div class="resource_info">
+      <a href="#" class="button">Samsung Galaxy On7 Prime (Black, 4GB RAM + 64GB Memory)<br></a>
+      <h>by Samsung</h>
+      <p class="price">Rs.13,990<br></p>
+      <h2><a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart<br><br></a></h2>
+      <h>FREE Shipping on eligible orders<br></h>
+      <h>In stock on September 10,2018<br></h>
+      <h>Price may vary by colour</h>
+  </li>
+  <li>
+    <img src="images/redmiy2.jpg">
+    <br><br>
+
+    <div class="resource_info">
+      <a href="#" class="button">Redmi Y2 (Dark Grey, 64GB)<br></a>
+      <h>by Redmi</h>
+      <p class="price">Rs.12,999<br></p>
+      <h2><a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart<br><br></a></h2>
+      <h>FREE Shipping on eligible orders<br></h>
+      <h>In stock on September 10,2018<br></h>
+      <h>Price may vary by colour</h>
+  </li>
+  <li>
+    <img src="images/iphone7b.jpg">
+    <br><br>
+
+    <div class="resource_info">
+      <a href="#" class="button">Apple iPhone 7 (Black, 32GB)<br></a>
+      <h>by Apple</h>
+      <p class="price">Rs.44,011<br></p>
+      <h2><a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart<br><br></a></h2>
+      <h>FREE Shipping on eligible orders<br></h>
+      <h>Get it by </h>
+      <ht>August 30,2018<br></ht>
+      <h>Price may vary by colour</h>
+  </li>
+  <li>
+    <img src="images/iphone7rg.jpg">
+    <br><br>
+
+    <div class="resource_info">
+      <a href="#" class="button">Apple iPhone 7 (Rose Gold, 32GB)<br></a>
+      <h>by Apple</h>
+      <p class="price">Rs.43,999<br></p>
+      <h2><a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart<br><br></a></h2>
+      <h>FREE Shipping on eligible orders<br></h>
+      <h>In stock on September 10,2018<br></h>
+      <h>Price may vary by colour</h>
+  </li>
+  <li>
+    <img src="images/iphonex256.jpg">
+    <br><br>
+
+    <div class="resource_info">
+      <a href="#" class="button">Apple iPhone X (Space Gray, 256GB)<br></a>
+      <h>by Apple</h>
+      <p class="price">Rs.99,190<br></p>
+      <h2><a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart<br><br></a></h2>
+      <h>FREE Shipping on eligible orders<br></h>
+      <h>Get it by</h>
+      <ht>August 31,2018<br></ht>
+      <h>Price may vary by colour</h>
+  </li>
+  <li>
+    <img src="images/samsungonpro.jpg">
+    <br><br>
+
+    <div class="resource_info">
+      <a href="#" class="button">Samsung On7 Pro (Gold)<br></a>
+      <h>by Samsung</h>
+      <p class="price">Rs.7,990<br></p>
+      <h2><a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart<br><br></a></h2>
+      <h>FREE Shipping on eligible orders<br></h>
+      <h>In stock on September 10,2018<br></h>
+      <h>Price may vary by colour</h>
+  </li>
+
+</ul>
+</div>
+</body>
+</html>
+

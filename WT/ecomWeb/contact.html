@@ -1,0 +1,223 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+#backgroundImage{z-index: 1;}
+
+#backgroundImage:before {
+   content: "";
+   position:fixed;
+   z-index: -1;
+  top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+
+   min-height: 100%;
+   min-width: 100%;
+    opacity: 0.015;
+    filter:alpha(opacity=100);
+ }
+ #backgroundImage2{
+ 	background-color: white;
+ }
+ .button{
+  text-decoration: none;
+  font-weight: 600;
+  color: #6666ff;
+  font-family: arial;
+}
+header{background-image:url("images/headbg.jpg");
+color: white;
+	width: 100%;
+	padding: 15px 0;
+	text-align: center;
+}
+.navbar {
+    overflow: hidden;
+    background-image: url("images/navbarbg.jpg");
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;    
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: Gray;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.vertical-menu {
+    width: 600px;
+}
+
+.vertical-menu a {
+    background-image:  url("images/navbarbg.jpg");
+    color: white;
+    font-size: 25px;
+    font-family: Comic Sans MS, Comic Sans, cursive; 
+    display: inline-table; 
+    padding: 10px; 
+    text-decoration: none;
+}
+.vertical-menu a:hover {
+    background-color:DarkMagenta; 
+}
+
+.vertical-menu a.active {
+    background-image: url("images/headbg.jpg"); 
+  color: white;
+  font-size: 25px;
+  padding: 20px;
+}
+.title{
+	font-size: 45px;
+	font-family: Lucida sans unicode, sans-serif;
+	color:black;
+	font-weight: 500;
+	display: inline;
+	text-align: center;
+}
+.subtitle{
+	font-size: 18px;
+	font-family: Optima, sans-serif;
+	color:black;
+	font-weight: bold;
+	display: inline;
+	text-align: center;
+}
+.title2{
+	font-size: 28px;
+	font-family: Optima, sans-serif;
+	color:black;
+	font-weight: bold;
+	display: inline;
+	text-align: center;
+}
+.subtitle2{
+	font-size: 15px;
+	font-family: Optima, sans-serif;
+	color:black;
+	font-weight: bold;
+	display: inline;
+	text-align: center;
+}
+
+.sidenote p{
+  background-image: url("images/sidenotebg.jpg"); 
+  background-repeat: no-repeat;
+  background-size: 600px;
+  padding-bottom: 500px;
+  padding-right: 200px;
+  padding-left: 150px;
+  float: right;
+  
+}
+
+</style>
+</head>
+<body>
+<header> <h1>SMART ELECTRONICS</h1></header>
+
+<div class="navbar">
+ <a class="active" href="file:///C:/Users/DELL/Desktop/ecomWeb/ecom.html"><i class="fa fa-fw fa-home"></i> Home</a>
+<a href="file:///C:/Users/DELL/Desktop/ecomWeb/contact.html"><i class="fa fa-fw fa-envelope"></i> Contact</a> 
+  <a href="file:///C:/Users/DELL/Desktop/ecomWeb/login.html"><i class="fa fa-fw fa-user"></i> Login</a>
+ 
+
+  <a href="file:///C:/Users/DELL/Desktop/ecomWeb/about.html"><i class="fa fa-sticky-note"></i> About Us</a>
+  <div class="dropdown">
+    <button class="dropbtn">Products
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="file:///C:/Users/DELL/Desktop/ecomWeb/laptops.html"><i class="fa fa-desktop"></i>Laptop</a>
+      <a href="file:///C:/Users/DELL/Desktop/ecomWeb/mobiles.html"><i class="fa fa-mobile"></i>Mobiles</a>
+<a href="file:///C:/Users/DELL/Desktop/ecomWeb/headphones.html"><i class="fa fa-headphones"></i>Headphones</a>
+    </div>
+  </div> 
+ <input class="search-area" type="text" name="text" placeholder="search here">
+ <button class="search-btn" <i class="fa fa-search"></i>Search</button>
+<a href="#"><i class="fa fa-shopping-cart"></i> Cart</a>
+
+ 
+</div>
+
+
+<div id="backgroundImage">
+  <br><br>
+  <center><img src="logoe.jpg" width="100" height="100"></center>
+<center><div class="subtitle">
+  For any enquiries contact of customer care (Open 24*7)
+  <center>1800 768 1234 </center><br><br>
+  <center>Contact throught email</center>
+  <center>smartelectronics7592@gmail.com</center>
+
+
+
+</div>
+</center>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
