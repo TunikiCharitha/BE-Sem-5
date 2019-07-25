@@ -1,0 +1,116 @@
+insert into MEDICINE values('M1','GLADIN','12-JAN-2007','12-FEB-2010',50);
+insert into MEDICINE values('M2','CRECIN','20-MAR-2007','20-APR-2009',100);
+insert into MEDICINE values('M3','HEPATOCIN','02-JUN-2007','10-MAY-2009',150);
+insert into MEDICINE values('M4','FERADEX','13-APR-2008','12-JUN-2010',250);
+insert into MEDICINE values('M5','ZINDAG','30-JUN-2008','20-MAY-2009',300);
+insert into MEDICINE values('M6','BETIVITA','10-FEB-2008','10-FEB-2009',120);
+insert into MEDICINE values('M7','CIPROFOX','04-MAR-2006','10-APR-2009',70);
+insert into MEDICINE values('M8','BUTAVON','11-MAY-2007','13-JUN-2010',35);
+
+create table dealer (dcode char(2) not null primary key , dname varchar(30), dloc varchar(30));
+
+insert into dealer values('D1','ALPHA','KOLKATA');
+insert into dealer values('D2','DELTA','DELHI');
+insert into dealer values('D3','LAXMI','PURI');
+
+create table industry(indname varchar(30),indloc varchar(30));
+insert into industry values('ROXY MEDICO', 'Mumbai');
+insert into industry values('MODERN PHARMA', 'Okha');
+insert into industry values('DEXOVAN', 'Kolkata');
+
+alter table industry add primary key (indname);
+
+create table bill (billno number(20,0) not null primary key , billamt number(20,0));
+insert into bill values(1110, 500);
+insert into bill values(1150, 800);
+insert into bill values(1205, 1000);
+insert into bill values(1322, 300);
+insert into bill values(1490, 900);
+insert into bill values(1798, 2000);
+
+
+create table relates_to (medcode char(2) not null , billno number(20,0) not null , billdt date);
+alter table relates_to add constraint PK_relates_to primary key(medcode,billno);
+
+create table supplies (dcode char(2) not null,medcode char(2) not null);
+alter table supplies add constraint PK_supplies primary key(dcode,medcode);
+
+create table sales_to (dcode char(2) not null,indname varchar(20) not null);
+alter table sales_to add constraint PK_sales_to primary key(dcode,indname);
+
+create table mfd_by (medcode char(2) not null,indname varchar(20) not null);
+alter table mfd_by add constraint PK_mfd_by primary key(medcode,indname);
+
+alter table relates_to add foreign key(medcode) references medicine(medcode);
+alter table relates_to add foreign key(billno) references bill(billno);
+
+alter table supplies add foreign key(dcode) references dealer(dcode);
+alter table supplies add foreign key(medcode) references medicine(medcode);
+
+alter table sales_to add foreign key(dcode) references dealer(dcode);
+alter table sales_to add foreign key(indname) references industry(indname);
+
+alter table mfd_by add foreign key(medcode) references medicine(medcode);
+alter table mfd_by add foreign key(indname) references industry(indname);
+
+insert into relates_to values('M1',1100,'10-JAN-08'); 
+insert into relates_to values('M7',1100,'10-JAN-08'); 
+insert into relates_to values('M2',1150,'12-FEB-08'); 
+insert into relates_to values('M3',1150,'12-FEB-08'); 
+insert into relates_to values('M1',1205,'07-JAN-08'); 
+insert into relates_to values('M8',1205,'07-JAN-08'); 
+insert into relates_to values('M5',1205,'07-JAN-08'); 
+insert into relates_to values('M6',1798,'20-FEB-08'); 
+insert into relates_to values('M4',1322,'05-FEB-08'); 
+insert into relates_to values('M2',1322,'05-FEB-08'); 
+insert into relates_to values('M3',1322,'05-FEB-08'); 
+insert into relates_to values('M6',1490,'22-DEC-07'); 
+insert into relates_to values('M2',1490,'22-DEC-07'); 
+insert into relates_to values('M1',1490,'22-DEC-08'); 
+
+INSERT INTO SUPPLIES VALUES('D1','M1');
+INSERT INTO SUPPLIES VALUES('D1','M4');
+INSERT INTO SUPPLIES VALUES('D1','M8');
+INSERT INTO SUPPLIES VALUES('D2','M2');
+INSERT INTO SUPPLIES VALUES('D2','M5');
+INSERT INTO SUPPLIES VALUES('D2','M7');
+INSERT INTO SUPPLIES VALUES('D3','M3');
+INSERT INTO SUPPLIES VALUES('D3','M6');
+
+INSERT INTO SALES_TO VALUES('D1','DEXOVAN');
+INSERT INTO SALES_TO VALUES('D1','MODERN PHARMA');
+INSERT INTO SALES_TO VALUES('D1','ROXY MEDICO');
+INSERT INTO SALES_TO VALUES('D2','DEXOVAN');
+INSERT INTO SALES_TO VALUES('D2','MODERN PHARMA');
+INSERT INTO SALES_TO VALUES('D2','ROXY MEDICO');
+INSERT INTO SALES_TO VALUES('D3','DEXOVAN');
+INSERT INTO SALES_TO VALUES('D3','ROXY MEDICO');
+
+INSERT INTO MFD_BY VALUES('M1','ROXY MEDICO');
+INSERT INTO MFD_BY VALUES('M2','ROXY MEDICO');
+INSERT INTO MFD_BY VALUES('M3','ROXY MEDICO');
+INSERT INTO MFD_BY VALUES('M4','MODERN PHARMA');
+INSERT INTO MFD_BY VALUES('M5','MODERN PHARMA');
+INSERT INTO MFD_BY VALUES('M6','DEXOVAN');
+INSERT INTO MFD_BY VALUES('M7','DEXOVAN');
+INSERT INTO MFD_BY VALUES('M8','DEXOVAN');
+
+SELECT MEDICINE.MEDCODE,MEDNAME,MFGDT,EXPDT,PRICE FROM MEDICINE,MFD_BY WHERE MFD_BY.MEDCODE = MEDICINE.MEDCODE AND MFD_BY.INDNAME='DEXOVAN';
+
+SELECT DNAME,DLOC FROM DEALER,SALES_TO WHERE DEALER.DCODE=SALES_TO.DCODE AND SALES_TO.INDNAME='MODERN PHARMA';
+
+SELECT MEDICINE.MEDCODE,MEDNAME,MFGDT,EXPDT,PRICE FROM MEDICINE, RELATES_TO WHERE RELATES_TO.MEDCODE = MEDICINE.MEDCODE AND BILLDT LIKE '%FEB%'; 
+
+SELECT MEDCODE,MEDNAME,PRICE FROM MEDICINE WHERE EXPDT-MFGDT>=2;
+
+SELECT MEDICINE.MEDNAME,BILL.BILLAMT FROM RELATES_TO,MEDICINE,BILL WHERE MEDICINE.MEDCODE=RELATES_TO.MEDCODE AND RELATES_TO.BILLNO=BILL.BILLNO;
+
+SELECT * FROM RELATES_TO,MEDICINE WHERE RELATES_TO.MEDCODE=MEDICINE.MEDCODE ORDER BY RELATES_TO.BILLDT;
+
+select  medicine.medcode,medname,mfgdt,expdt,price from supplies,medicine where supplies.MEDCODE = medicine.MEDCODE and supplies.DCODE='D3';
+
+select  * from mfd_by,medicine where mfd_by.MEDCODE = medicine.MEDCODE order by mfd_by.INDNAME;
+
+SELECT * FROM MEDICINE WHERE MFGDT LIKE '%JUN%';
+
+commit;
