@@ -1,0 +1,26 @@
+INSERT INTO EMPLOYEE(fname,minit,lname,ssn,bdate,address,sex,salary)
+    VALUES('John','b','Walker',987654321,'09-MAY-1998','731 Houster','M',25000);
+INSERT INTO EMPLOYEE(fname,minit,lname,ssn,bdate,address,sex,salary,super_ssn)
+    VALUES('Tom','b','Walker',987654322,'19-MAY-1998','222 Houster','M',35000,(SELECT ssn FROM employee WHERE fname ='John'));
+INSERT INTO DEPARTMENT(dname,dnumber,mgr_ssn,mgr_start_date)
+    VALUES('IT',03,(SELECT ssn FROM employee WHERE fname ='John'),'25-JUL-2017');
+UPDATE EMPLOYEE SET DNO=(select dnumber from department where dname='IT') WHERE SSN = 987654321;
+INSERT INTO DEPARTMENT(dname,dnumber,mgr_ssn,mgr_start_date)
+    VALUES('CSE',01,(SELECT ssn FROM employee WHERE fname ='Johny'),'02-JUL-2016');
+UPDATE EMPLOYEE SET DNO=(select dnumber from department where dname='CSE') WHERE SSN = 987654322;
+INSERT INTO DEPT_LOCATIONS(DLOCATION,DNUMBER) VALUES('Gandipet',(SELECT DNUMBER FROM DEPARTMENT WHERE dname='CSE'));
+INSERT INTO DEPT_LOCATIONS(DNUMBER,DLOCATION) VALUES((SELECT DNUMBER FROM DEPARTMENT WHERE dname='IT'),'Kokapet');
+INSERT INTO DEPENDENT(ESSN,DEPENDENT_NAME,SEX,BDATE,RELATIONSHIP) VALUES((SELECT ssn FROM employee WHERE fname ='John'),'ALEXA','F','08-APR-1999','DAUGHTER');
+INSERT INTO DEPENDENT(ESSN,DEPENDENT_NAME,SEX,BDATE,RELATIONSHIP) VALUES((SELECT ssn FROM employee WHERE fname ='John'),'ALICIA','F','22-APR-1978','WIFE');
+INSERT INTO DEPENDENT(ESSN,DEPENDENT_NAME,SEX,BDATE,RELATIONSHIP) VALUES((SELECT ssn FROM employee WHERE fname ='Tom'),'FP JONES','M','17-MAY-1979','FATHER');
+INSERT INTO PROJECTS(pname,pnumber,plocation,dno) VALUES('Face Recognition',233,'Gandipet',(SELECT DNUMBER FROM DEPARTMENT WHERE dname='CSE'));
+INSERT INTO PROJECTS(pname,pnumber,plocation,dno) VALUES('IOT',253,'Kokapet',(SELECT DNUMBER FROM DEPARTMENT WHERE dname='IT'));
+INSERT INTO WORKS_ON(ESSN,PNO,HOURS) VALUES ((SELECT SSN FROM EMPLOYEE WHERE FNAME='John'),(SELECT PNUMBER FROM PROJECTS WHERE PNAME='Face Recognition'),37);
+INSERT INTO WORKS_ON(ESSN,PNO,HOURS) VALUES ((SELECT SSN FROM EMPLOYEE WHERE FNAME='Tom'),(SELECT PNUMBER FROM PROJECTS WHERE PNAME='IOT'),42);
+SELECT BDATE,ADDRESS FROM EMPLOYEE WHERE FNAME='John' and MINIT='b' and LNAME='Walker';
+/*select pno,dno,lname,address,bdate from projects,department,employee where plocation='Gandipet' and dnumber=dno and mgr_ssn=ssn;*/
+select fname from employee where  90<substr(bdate,8,12) and  substr(bdate,8,12)<=99;
+select fname from employee where CHARINDEX('Houster',(SELECT ADDRESS FROM EMPLOYEE))>0;
+select FNAME FROM EMPLOYEE WHERE SUBSTR(ADDRESS,-7,10)='Houster';
+select salary+salary*0.1 as sal from employee e,projects p,works_on w where e.ssn=w.essn and p.pnumber=w.pno and p.pname='IOT';
+/*update employee set salary=salary+salary*0.1 where dno=3;*/
